@@ -5,6 +5,9 @@ let cards = [];
 
 function searchCards() 
 {
+	$('#cards').empty();
+	$('#loading').show();
+
 	let name = $('#input').val();
 	let apiCall = `https://api.magicthegathering.io/v1/cards?name=${name}`;
 
@@ -12,7 +15,6 @@ function searchCards()
 	ajax.onload = gotResponse;
 	ajax.onerror = function(err) { console.log(err); }
 	ajax.open('GET', apiCall, true);
-	// ajax.setRequestHeader('X-Mashape-Key', prodKey);
 	ajax.send();
 }
 
@@ -31,20 +33,18 @@ function imageExists(image_url)
 
 function gotResponse(progressEvent) 
 {
-	let results = $('#results');
-	results.empty();
+	let cardDiv = $('#cards');
 
 	let response = JSON.parse(progressEvent.currentTarget.response);
 	cards = response.cards;
 
 	if(cards.length == 0)
 	{
-		results.text('No results.');
+		cardDiv.text('No results.');
 	}
 	else
 	{
 		cards.sort(sortCards);
-		console.log(cards)
 	
 		printCards();
 	}
@@ -74,9 +74,9 @@ function sortCards(a, b)
 }
 
 function printCards() {
+	$('#loading').hide();
 	for(let card of cards)
 	{
-		console.log(card)
 		if(card.imageUrl != undefined && imageExists(card.imageUrl))
 		{
 			let name = card.name;
@@ -95,7 +95,7 @@ function printCards() {
 			newCard.append(cardImg);
 			cardLink.append(newCard);
 
-			$('#results').append(cardLink);
+			$('#cards').append(cardLink);
 		}
 	}
 }
@@ -111,7 +111,7 @@ $('#order').click(function() {
 
 	if(cards.length != 0) {
 		cards.sort(sortCards);
-		$('#results').empty();
+		$('#cards').empty();
 		printCards();
 	}
 });
