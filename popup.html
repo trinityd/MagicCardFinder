@@ -1,0 +1,83 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <script src="libs/jquery.min.js"></script>
+<style>
+	#navbar {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 100px;
+		background-color: white;
+	}
+	.center {
+		text-align: center;
+	}
+	.row {
+		margin-bottom: 5px;
+	}
+	#title {
+		width: 100%;
+		font-family: 'Bree Serif', serif;
+		font-weight: bolder;
+		font-size: 150%;
+		background-color: #42f489;
+		margin-bottom: 5px;
+	}
+	#inputarea {
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+	#sort {
+		height: 25px;
+	}
+	#order {
+		height: 25px;
+	}
+	.card {
+		/*width: 75%;*/
+		/*text-align: center;*/
+		margin: 10 auto;
+		/*border: 1px solid green;*/
+	}
+	.cardimg {
+		/*width: 75%;*/
+	}
+	#results {
+		margin-top: 100px;
+		margin-bottom: 10px;
+	}
+	button {
+		width: 100px;
+	}
+	body {
+		width: 400px;
+		height: 0px;
+		margin: 0px;
+		background-color: white;
+	}
+</style>
+</head>
+<body>
+	<div id='navbar'>
+	<div id='title' class='center'>
+		Magic Card Finder
+	</div>
+	<div id='inputarea' class='center'>
+		<div class='row'>
+		<input id='input' type='text'>
+		<button id='search'>Search</button>
+		</div>
+		Sort by: 
+		<select id='sort'>
+			<option name='name' selected>Name</option>
+			<option name='cost'>Converted Cost</option>
+		</select>
+		<button id='order'>Ascending</button>
+	</div>
+	</div>
+	<div id='results' class='center'>
+	</div>
+	<script language="javascript" src="magiccardfinder.js"></script>
+</body>
+</html>
