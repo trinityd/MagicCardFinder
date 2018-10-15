@@ -3,7 +3,7 @@
 	"name": "Magic Card Finder",
 	"short_name": "Magic Card Finder",
 	"description": "Search MTG cards",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"content_scripts": [
 		{
 			"matches": [
